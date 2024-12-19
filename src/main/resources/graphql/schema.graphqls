@@ -1,0 +1,42 @@
+type Query{
+    getAllClient: [Client],
+    getAllCommandes: [Commande],
+    getCommande(id: Float): Commande,
+    getClient(id: Float): Client
+
+
+}
+type Mutation{
+    addCommande(commande:CommandeDto): Commande,
+    deleteCommande(id: Float): String,
+    updateCommande(id: Float, commandeDto:CommandeDto): Commande,
+    addClient(client:ClientDto): Client,
+    deleteClient(id: Float): String
+    updateClient(id: Float, clientDto:ClientDto): Client
+}
+type Subscription{
+    commandeAdded:Commande
+}
+input CommandeDto{
+    date: String,
+    montantTotal: Float,
+    idClient: Float
+
+}
+input ClientDto{
+    nom: String,
+}
+type Commande{
+    id: Float,
+    date: String,
+    montantTotal: Float,
+
+    client: Client
+}
+
+type Client{
+    id: Float,
+    nom: String!,
+
+}
+
